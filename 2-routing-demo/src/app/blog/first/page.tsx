@@ -1,4 +1,4 @@
 const First = () => {
-  return <div>First blog post</div>;
+  return <h1>First blog post</h1>;
 };
 export default First;

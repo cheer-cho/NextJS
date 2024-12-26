@@ -3,10 +3,10 @@
 // therefore BarChart and LineChart should be render inside Dashboard's return
 
 const BarChart = () => {
-  return <div>Bar Chart</div>;
+  return <h1>Bar Chart</h1>;
 };
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return <h1>Dashboard</h1>;
 };
 export default Dashboard;
