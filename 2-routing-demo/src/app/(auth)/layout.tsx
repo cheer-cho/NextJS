@@ -1,7 +1,10 @@
 'use client';
 
-import Link from 'next/link';
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+
+import Link from 'next/link';
+
 import './styles.css';
 
 const navLinks = [
@@ -13,8 +16,17 @@ const navLinks = [
 export default function Layout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
+  const [input, setInput] = useState('');
+
   return (
     <div>
+      <div>
+        <input
+          type='text'
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+      </div>
       {navLinks.map((link) => {
         const isActive = pathname.startsWith(link.href);
         return (
