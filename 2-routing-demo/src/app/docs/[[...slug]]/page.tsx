@@ -1,10 +1,12 @@
 type DocsProps = {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 };
 
-const Docs = ({ params: { slug } }: DocsProps) => {
+const Docs = async ({ params }: DocsProps) => {
+  const { slug } = await params;
+
   if (slug?.length === 2) {
     return (
       <h1>
@@ -16,4 +18,5 @@ const Docs = ({ params: { slug } }: DocsProps) => {
   }
   return <h1>Docs home page</h1>;
 };
+
 export default Docs;

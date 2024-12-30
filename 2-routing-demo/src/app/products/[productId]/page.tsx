@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 
 type ProductDetailsProps = {
-  params: {
+  params: Promise<{
     productId: string;
-  };
+  }>;
 };
 
 export const generateMetadata = async ({
