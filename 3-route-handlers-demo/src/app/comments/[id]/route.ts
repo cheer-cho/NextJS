@@ -1,7 +1,11 @@
 import { redirect } from 'next/navigation';
 import { comments } from './../data';
 
-export async function GET(_: Request, { params }: { params: { id: string } }) {
+type commentsIdParams = {
+  params: Promise<{ id: string }>;
+};
+
+export async function GET(_: Request, { params }: commentsIdParams) {
   const { id } = await params;
 
   if (parseInt(id) > comments.length) {
@@ -13,10 +17,7 @@ export async function GET(_: Request, { params }: { params: { id: string } }) {
   return Response.json(comment, { status: 200 });
 }
 
-export async function PATCH(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(request: Request, { params }: commentsIdParams) {
   const { id } = await params;
   const index = comments.findIndex((comment) => comment.id === parseInt(id));
 
@@ -30,10 +31,7 @@ export async function PATCH(
   return Response.json(comments[index], { status: 200 });
 }
 
-export async function DELETE(
-  _: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(_: Request, { params }: commentsIdParams) {
   const { id } = await params;
   const index = comments.findIndex((comment) => comment.id === parseInt(id));
 
